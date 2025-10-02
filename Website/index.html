@@ -21,9 +21,7 @@
     <link rel="stylesheet" href="https://rds3.northsouth.edu/assets/css/login-style.css">
     <script type="text/javascript" src="https://rds3.northsouth.edu/assets/js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="https://rds3.northsouth.edu/assets/js/login.js"></script>
-    <script type="text/javascript">
-        var ctoday = 1759265242000;
-    </script>
+    
 </head>
 
 <body>
@@ -104,6 +102,45 @@
             alert('Please enter a username.');
         }
         // Form will submit via GET if valid
+    });
+</script>
+
+<script>
+    function updateCurrentTime() {
+        const now = new Date();  // Get current local time
+        let hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        
+        hours = hours % 12;  // Convert to 12-hour format
+        hours = hours ? hours : 12;  // The hour '0' should be '12'
+        
+        // Format with leading zeros
+        const formattedTime = 
+            (hours < 10 ? '0' + hours : hours) + ':' + 
+            (minutes < 10 ? '0' + minutes : minutes) + ':' + 
+            (seconds < 10 ? '0' + seconds : seconds) + ' ' + ampm;
+        
+        // Update the span
+        document.getElementById('txt').innerHTML = 'Current Server Time: ' + formattedTime;
+    }
+    
+    // Run once immediately
+    updateCurrentTime();
+    
+    // Update every second
+    setInterval(updateCurrentTime, 1000);
+</script>
+
+<script>
+    document.getElementById('usernameForm').addEventListener('submit', function(e) {
+        const username = document.getElementById('UserName').value.trim();
+        if (username.length !== 7) {
+            e.preventDefault();
+            alert('Username must be exactly 7 characters.');
+        }
+        // Form will submit via GET if valid, passing ?username= to Verification.html
     });
 </script>
 

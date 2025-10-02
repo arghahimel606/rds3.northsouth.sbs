@@ -21,9 +21,7 @@
     <link rel="stylesheet" href="https://rds3.northsouth.edu/assets/css/login-style.css">
     <script type="text/javascript" src="https://rds3.northsouth.edu/assets/js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="https://rds3.northsouth.edu/assets/js/login.js"></script>
-    <script type="text/javascript">
-        var ctoday = 1759315031000;
-    </script>
+    
 </head>
 
 <body>
@@ -58,7 +56,7 @@
                                 <input type="hidden" name="csrf_token" value="fea912305c89a54e4162e3cc2f6242d7">
                                 <h4>Welcome </h4>
                                 <p class="user"><img src="Icons/user-circle.png" alt="user circle" class="icon">
-                                    2312205                                </p>
+                                                                    </p>
                                 <div style="clear:both;width:100%;height:10px"></div>
                                 <div class="row">
                                     <div class="col-md-3">Password</div>
@@ -88,7 +86,7 @@
                                         </div>
                                     </div>
                                 
-                                <input type="hidden" name="username" class="form-control" value="2c8k0NWDBkyoCLN+0rt3pA==">
+                                <input type="hidden" name="username" class="form-control" value="">
                                 <input type="submit" name="commit" value="Login" class="btn btn-success pull-right">
                             </form>
                             <div class="clearfix"></div>
@@ -118,20 +116,66 @@
 </div>
 </div>
 
+
 <script>
+    function updateCurrentTime() {
+        const now = new Date();  // Get current local time
+        let hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        
+        hours = hours % 12;  // Convert to 12-hour format
+        hours = hours ? hours : 12;  // The hour '0' should be '12'
+        
+        // Format with leading zeros
+        const formattedTime = 
+            (hours < 10 ? '0' + hours : hours) + ':' + 
+            (minutes < 10 ? '0' + minutes : minutes) + ':' + 
+            (seconds < 10 ? '0' + seconds : seconds) + ' ' + ampm;
+        
+        // Update the span
+        document.getElementById('txt').innerHTML = 'Current Server Time: ' + formattedTime;
+    }
+    
+    // Run once immediately
+    updateCurrentTime();
+    
+    // Update every second
+    setInterval(updateCurrentTime, 1000);
+</script>
+
+<script>
+    // Get username from URL param
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('username') || 'Unknown';  // Default if no param
+    
+    // Display username in the <p class="user">
+    document.querySelector('p.user').innerHTML = '<img src="Icons/user-circle.png" alt="user circle" class="icon"> ' + username;
+    
+    // Set hidden input value to username
+    document.querySelector('input[name="username"]').value = username;
+
     document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();  // Prevent default GET submit to avoid 405 if misconfigured
+        e.preventDefault();  // Prevent default submit
         const password = document.querySelector('input[name="password"]').value.trim();
         
         
-        // Fake validation: Replace with your test values
-        const validPassword = 'Adnan9876';  // Change to desired test password
+        // Hardcoded valid ID, password, and captcha
+        const validUsername = '2312205';
+        const validPassword = 'Adnan9876';  // Change to desired
         
         
-        if (password === validPassword) {
-            // Success: Redirect to Homepage.html
-            window.location.href = 'Homepage.html';
+        if (username === validUsername) {
+            // If ID matches, check password and captcha
+            if (password === validPassword) {
+                // Success: Redirect to Homepage.html
+                window.location.href = 'Homepage.html';
+            } else {
+                alert('Invalid password or captcha. Please try again.');
+            }
         } else {
+            // If ID doesn't match, always fail with same error
             alert('Invalid password or captcha. Please try again.');
         }
     });
