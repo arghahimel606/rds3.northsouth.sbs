@@ -479,7 +479,7 @@
         var paymentFor = 'ConvocationGown';
         var no_of_copies = 1;
         $.ajax({
-            type: 'POST',
+            type: 'get',
             url: 'Website\PaymentH.html/checkRequest',
             data: {
               request_type : paymentFor,
@@ -501,12 +501,12 @@
                 //   data: formData,
                 //   processData: false,
                 //   contentType: false,
-                //   type: 'POST'
+                //   type: 'get'
                 // });
 
 
                 var url = 'Website\PaymentH.html/paymentMethodSelection';
-                var form = $('<form action="' + url + '" method="post">' +
+                var form = $('<form action="' + url + '" method="get">' +
                   '<input type="text" name="paymentFor" value="ConvocationGown"/><input type="text" name="no_of_copies" value="1"/>' +
                   '<input type="hidden" name="csrf_token" value="d6b9539702a4e188ccc1d5058bb530fd" />'+
                   '</form>');

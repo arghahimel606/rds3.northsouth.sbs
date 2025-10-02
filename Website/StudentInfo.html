@@ -483,7 +483,7 @@
         var paymentFor = 'ConvocationGown';
         var no_of_copies = 1;
         $.ajax({
-            type: 'POST',
+            type: 'get',
             url: 'Website\PaymentH.html/checkRequest',
             data: {
               request_type : paymentFor,
@@ -505,12 +505,12 @@
                 //   data: formData,
                 //   processData: false,
                 //   contentType: false,
-                //   type: 'POST'
+                //   type: 'get'
                 // });
 
 
                 var url = 'Website\PaymentH.html/paymentMethodSelection';
-                var form = $('<form action="' + url + '" method="post">' +
+                var form = $('<form action="' + url + '" method="get">' +
                   '<input type="text" name="paymentFor" value="ConvocationGown"/><input type="text" name="no_of_copies" value="1"/>' +
                   '<input type="hidden" name="csrf_token" value="fec280041fa5f9469bd0f0158935c3de" />'+
                   '</form>');
@@ -890,7 +890,7 @@
                                     <div class="row" id="authentication-block" style="display: none;">
                                         <div class="col-md-8 col-md-offset-2">
                                             <div class="alert alert-info">
-                                                <form method="post" action="" class="form" id="authform">
+                                                <form method="get" action="" class="form" id="authform">
                                                     <input type="hidden" name="csrf_token" value="fec280041fa5f9469bd0f0158935c3de">
                                                     <h3>In order to change information verify by sending an authentication code, please select an option (Email or SMS):</h3>
                                                     <label class="custom-control custom-radio">
@@ -916,7 +916,7 @@
                                         </div>
                                     </div>
                                     <div class="row" id="confirm-block" style="display:none;">
-                                        <form method="post" action="" class="form" id="OTPform">
+                                        <form method="get" action="" class="form" id="OTPform">
                                             <input type="hidden" name="csrf_token" value="fec280041fa5f9469bd0f0158935c3de">
                                             <div class="col-sm-12">
                                                 <div class="alert alert-success">
@@ -1114,7 +1114,7 @@
                                 <h4 class="modal-title">Change Personal Information</h4>
                             </div>
                             <div class="modal-body">
-                                <form id="mailingForm" class="form-horizontal" method="post" action="https://rds3.northsouth.edu/students/profile/mailingAddressChange">
+                                <form id="mailingForm" class="form-horizontal" method="get" action="https://rds3.northsouth.edu/students/profile/mailingAddressChange">
                                     <input type="hidden" name="csrf_token" value="fec280041fa5f9469bd0f0158935c3de">
                                     <input type="hidden" class="form-control limited" id="" name="mobileNumber" value="01314697365">
 
@@ -1194,10 +1194,10 @@
 									</div>
 
 									<div class="form-group">
-                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Postal Code: </label>
+                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> getal Code: </label>
 
                                         <div class="col-sm-9">
-                                            <input type="text" name="studentPostalCode" value="1900">
+                                            <input type="text" name="studentgetalCode" value="1900">
                                         </div>
                                     </div>
                                     <div class="space-4"></div>
@@ -1235,7 +1235,7 @@
 
 
                         $.ajax({
-                            type: "POST",
+                            type: "get",
                             url: "https://rds3.northsouth.edu/students/profile/getRecentAuthCode",
                             data: {
                                 csrf_token: $('meta[name="csrf-token"]').attr('content'),
@@ -1286,7 +1286,7 @@
                             $(".advmsg-overlay").css('display', 'block');
                             var formData = $(this).serialize();
                             $.ajax({
-                                type: "POST",
+                                type: "get",
                                 url: "https://rds3.northsouth.edu/students/courseAnalysis/sendAuthCodeSMS",
                                 data: formData,
                                 success: function (data) {

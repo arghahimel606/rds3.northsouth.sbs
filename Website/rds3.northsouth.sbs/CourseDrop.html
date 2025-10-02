@@ -479,7 +479,7 @@
         var paymentFor = 'ConvocationGown';
         var no_of_copies = 1;
         $.ajax({
-            type: 'POST',
+            type: 'get',
             url: 'Website\PaymentH.html/checkRequest',
             data: {
               request_type : paymentFor,
@@ -501,12 +501,12 @@
                 //   data: formData,
                 //   processData: false,
                 //   contentType: false,
-                //   type: 'POST'
+                //   type: 'get'
                 // });
 
 
                 var url = 'Website\PaymentH.html/paymentMethodSelection';
-                var form = $('<form action="' + url + '" method="post">' +
+                var form = $('<form action="' + url + '" method="get">' +
                   '<input type="text" name="paymentFor" value="ConvocationGown"/><input type="text" name="no_of_copies" value="1"/>' +
                   '<input type="hidden" name="csrf_token" value="e2b74261b7ce0fabe2a7e9062a7e3c7e" />'+
                   '</form>');
@@ -679,7 +679,7 @@
                 $(".advmsg-overlay").css('display', 'block');
                 var formData = $(this).serialize();
                 $.ajax({
-                    type: "POST",
+                    type: "get",
                     url: "https://rds3.northsouth.edu/students/billing/dropAuthCodeSend",
                     data: formData,
                     success: function (data) {
