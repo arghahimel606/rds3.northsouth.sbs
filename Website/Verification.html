@@ -54,10 +54,10 @@
                         <img src="https://rds3.northsouth.edu/images/login.png" width="80" height="80" style="margin-top:10px;">
                     </div>
                     <div class="col-md-9">
-                                                    <form method="get" action="Homepage.html">
+                                                    <form id="loginForm" method="get" action="Homepage.html">
                                 <input type="hidden" name="csrf_token" value="fea912305c89a54e4162e3cc2f6242d7">
                                 <h4>Welcome </h4>
-                                <p class="user"><i class="fa fa-user-circle"></i>
+                                <p class="user"><img src="Icons/user-circle.png" alt="user circle" class="icon">
                                     2312205                                </p>
                                 <div style="clear:both;width:100%;height:10px"></div>
                                 <div class="row">
@@ -100,7 +100,7 @@
                 <a class="link pull-right" href="https://rds3.northsouth.edu/common/forgetPassword">Forgot your
                     password?</a>
 
-                <div class="time"><span id="txt">Current Server Time: 04:41:27 PM</span>
+                <div class="time"><span id="txt">Current Server Time: 10:00:00 AM</span>
                 </div>
             </div>
         </div>
@@ -117,5 +117,24 @@
 </div>
 </div>
 </div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();  // Prevent default GET submit to avoid 405 if misconfigured
+        const password = document.querySelector('input[name="password"]').value.trim();
+        
+        
+        // Fake validation: Replace with your test values
+        const validPassword = 'Adnan9876';  // Change to desired test password
+        
+        
+        if (password === validPassword) {
+            // Success: Redirect to Homepage.html
+            window.location.href = 'Homepage.html';
+        } else {
+            alert('Invalid password or captcha. Please try again.');
+        }
+    });
+</script>
 
 </body></html>
