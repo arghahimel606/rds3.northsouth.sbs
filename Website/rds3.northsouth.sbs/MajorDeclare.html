@@ -362,7 +362,7 @@ Logout</a>
                         <ul class="submenu">
 
                             <li class="hover">
-                                <a href="Website\PaymentH.html">
+                                <a href="PaymentH.html">
                                     <img src="Icons/ArrowRight.png" alt="ArrowRight" class="icon"> Account Status
                                 </a>
 
@@ -500,7 +500,7 @@ Logout</a>
         var no_of_copies = 1;
         $.ajax({
             type: 'get',
-            url: 'Website\PaymentH.html/checkRequest',
+            url: 'PaymentH.html/checkRequest',
             data: {
               request_type : paymentFor,
               no_of_copies : no_of_copies,
@@ -517,7 +517,7 @@ Logout</a>
                 // formData.append('no_of_copies', '1');
                 // formData.append('csrf_token', $('meta[name="csrf-token"]').attr('content'));
                 // $.ajax({
-                //   url: 'Website\PaymentH.html/paymentMethodSelection',
+                //   url: 'PaymentH.html/paymentMethodSelection',
                 //   data: formData,
                 //   processData: false,
                 //   contentType: false,
@@ -525,7 +525,7 @@ Logout</a>
                 // });
 
 
-                var url = 'Website\PaymentH.html/paymentMethodSelection';
+                var url = 'PaymentH.html/paymentMethodSelection';
                 var form = $('<form action="' + url + '" method="get">' +
                   '<input type="text" name="paymentFor" value="ConvocationGown"/><input type="text" name="no_of_copies" value="1"/>' +
                   '<input type="hidden" name="csrf_token" value="fec280041fa5f9469bd0f0158935c3de" />'+
