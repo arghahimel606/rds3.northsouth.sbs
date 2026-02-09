@@ -564,7 +564,7 @@ Logout</a>
             </div>
 
             <h2 style="text-align: center;color: green">SMS History : 253 </h2>
-            <p align="center"> <img src="Icons/Calender.png" alt="Calender" class="icon"> Today Date : <strong>2025-10-01</strong> 
+            <p align="center"> <img src="Icons/Calender.png" alt="Calender" class="icon"> Today Date : <strong id="todayDate"></strong> 
                 Student: <strong>2312205</strong>
                 Contact Phone: <strong>01314697365</strong></p>
             <div class="table-responsive">
@@ -790,8 +790,19 @@ Logout</a>
             }
 </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const today = new Date();
 
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
 
+        const formattedDate = `${year}-${month}-${day}`;
+
+        document.getElementById("todayDate").textContent = formattedDate;
+    });
+</script>
 
 
 
